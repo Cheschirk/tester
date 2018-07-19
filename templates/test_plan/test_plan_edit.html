@@ -1,0 +1,55 @@
+{% extends "wrapper.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+		<div class="container-fluid">
+
+        <div class="section section--main">
+                {% if user.is_authenticated %}
+				<div class="row">
+                    <div class="col-5"></div>
+					<div class="col-4">
+						<div class="content--date">
+							<span class="title title--main">Редактирование тест-плана</span>
+						</div>
+					</div>
+                </div>
+			    <div class="container">
+                 {% crispy form %}
+                {% csrf_token %}
+			    </div>
+                {% else %}
+                <div class="row">
+                    <div class="col-5"></div>
+					<div class="col-4">
+						<div class="content--date">
+							<span class="title title--main">Вы не имеете доступа к этой странице. Войдите что бы продолжить</span>
+						</div>
+					</div>
+                </div>
+                {% endif %}
+        <span class="text-light">Тест кейсы которые входят в этот тест план</span>
+            </div>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<span class="text-light">Все тест-кейсы</span>
+                {% for plancase in plancase_list %}
+				<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+					<div class="text-dark" id="drag1" draggable="true" ondragstart="drag(event)" width="336" height="69">{{ plancase.test_case.title }}</div>
+				</div>
+                {% endfor %}
+				</div>
+
+			<div class="col-6">
+				<span class="text-light">Добавленные тест-кейсы</span>
+				<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+					<div class="text-dark" id="drag2" draggable="true" ondragstart="drag(event)" width="336" height="69">Тест кейс 2</div>
+				</div>
+			</div>
+		</div>
+	</div>
+        </div>
+
+{% endblock %}

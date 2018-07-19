@@ -1,0 +1,34 @@
+{% extends "wrapper.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+		<div class="container-fluid">
+            <div class="section section--main">
+                {% if user.is_authenticated %}
+				<div class="row">
+                    <div class="col-5"></div>
+					<div class="col-4">
+						<div class="content--date">
+							<span class="title title--main">Создание тест-плана</span>
+						</div>
+					</div>
+                </div>
+			    <div class="container">
+                 {% crispy form %}
+                {% csrf_token %}
+			    </div>
+                {% else %}
+                <div class="row">
+                    <div class="col-5"></div>
+					<div class="col-4">
+						<div class="content--date">
+							<span class="title title--main">Вы не имеете доступа к этой странице. Войдите что бы продолжить</span>
+						</div>
+					</div>
+                </div>
+                {% endif %}
+            </div>
+		</div>
+
+{% endblock %}

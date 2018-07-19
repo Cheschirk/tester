@@ -1,0 +1,148 @@
+{% extends "wrapper.html" %}
+{% block content %}
+
+
+		<div class="container-fluid">
+			<div class="section section--main">
+				<div class="row">
+					<div class="col-4">
+						<div class="content--date">
+							<span class="title title--main">Статистика тест-планов</span>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="content--date">
+							<span class="title title--main">Выберите период "с"</span>
+							<input type="date" class="form-control" id="date" name="date" placeholder="Дата" required>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="content--date">
+							<span class="title title--main">"по"</span>
+							<input type="date" class="form-control" id="date" name="date" placeholder="Дата" required>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="content--date">
+							<div class="button_date">
+								<button type="button" class="btn btn-secondary">Применить</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class=section--table>
+				<div class="row ">
+					<div class="col-6 ">
+						<div class="table--border h-100">
+							<table class="table table-sm">
+								<thead>
+									<tr>
+										<th scope="col" style="width: 607px;">Запускалось более 1 месяца назад от выбранного периода</th>
+										<th scope="col">{{ count_all }}</th>
+									</tr>
+								</thead>
+							</table>
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">ID</th>
+                                            <th scope="col">Название тест плана</th>
+										<th scope="col">Дата последнего запуска</th>
+										<th scope="col">Статус запуска</th>
+									</tr>
+								</thead>
+
+								<tbody>
+                                {% for test_plan in testplan_list %}
+									<tr>
+										<th scope="row">{{ test_plan.id }}</th>
+										<td><a href="{% url 'test_plan_view' test_plan.pk %}">{{ test_plan.title }}</a></td>
+										<td>{{ test_plan.updated_at }}</td>
+										<td>{% if  test_plan.status == "failed" %}
+                                            <span class="badge badge-danger "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                        {% if  test_plan.status == "success" %}
+                                            <span class="badge badge-success "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                    {% if  test_plan.status == "in_process" %}
+                                            <span class="badge badge-warning "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                        </td>
+									</tr>
+                                {% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="col-6">
+						<div class="table--border h-100">
+							<div class="table">
+								<table class="table table-sm">
+									<thead>
+										<tr>
+											<th scope="col"><span class="table--title"> Запускались за выбранный период</span></th>
+											<th scope="col" ><span class="badge badge-secondary"><div class="badge--text">Всего</div></span></</th>
+											<th scope="col">{{ count_all }}</th>
+											<th scope="col" ><span class="badge badge-success"><div class="badge--text">Pass</div></span></</th>
+											<th scope="col">{{ count_success }}</th>
+											<th scope="col" ><span class="badge badge-danger"><div class="badge--text">Fail</div></span></th>
+											<th scope="col">{{ count_fail }}</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">ID</th>
+										<th scope="col">Название тест плана</th>
+										<th scope="col">Дата последнего запуска</th>
+										<th scope="col">Статус запуска</th>
+									</tr>
+								</thead>
+								<tbody>
+                                {% for test_plan in testplan_list %}
+									<tr>
+										<th scope="row">{{ test_plan.id }}</th>
+										<td><a href="{% url 'test_plan_view' test_plan.pk %}">{{ test_plan.title }}</a></td>
+										<td>{{ test_plan.updated_at }}</td>
+										<td>{% if  test_plan.status == "failed" %}
+                                            <span class="badge badge-danger "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                        {% if  test_plan.status == "success" %}
+                                            <span class="badge badge-success "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                    {% if  test_plan.status == "in_process" %}
+                                            <span class="badge badge-warning "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}</td>
+									</tr>
+                                {% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

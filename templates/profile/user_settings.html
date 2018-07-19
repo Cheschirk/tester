@@ -1,0 +1,46 @@
+{% extends "wrapper.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+		<div class="container-fluid">
+			<div class="section section--main">
+				<div class="container title title--main">
+                  <div class="row ">
+					<div class="col-4 ">
+                   {% crispy form %}
+                {% csrf_token %}
+                    </div>
+                    <div class="col-3">
+                    </div>
+                    <div class="col-3 photo-board">
+                        <div class="row justify-content-center profile-photo">
+
+                          <i class="fa fa-camera" style="font-size:60px"></i>
+                        </div>
+                    </div>
+                      <div class="col-2">
+                    </div>
+                  </div>
+
+				<div class="form-group align-items-center-around m-3  ">
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col">
+					<button type="submit" class="btn btn-success">Сохранить</button>
+                        </div>
+                        <div class="col">
+					<button type="submit" class="btn btn-secondary">Отменить</button>
+                        </div>
+                    </div>
+                </div>
+				</div>
+			</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+{% endblock %}
+v

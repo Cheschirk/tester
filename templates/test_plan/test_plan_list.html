@@ -1,0 +1,204 @@
+{% extends "wrapper.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="section section--main">
+            <div class="row">
+                <div class="col-4">
+                    <div class="main-search">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск..."
+                                   aria-label="Search">
+                            <button type="button" class="btn btn-secondary">Найти</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="main-search">
+							<span class="title title--main">
+								<div class="filter--container">
+
+									<div id="accordion">
+										<div class="card-header" id="headingTwo">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapsed" data-toggle="collapse"
+                                                        data-target="#collapseTwo" aria-expanded="false"
+                                                        aria-controls="collapseTwo">
+													<div class="text-white filter-text">
+														Расширенный фильтр
+													</div>
+												</button>
+											</h5>
+										</div>
+										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                             data-parent="#accordion">
+											<div class="card-body">
+												<div class="row">
+
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Выберите период      "с"</span>
+															<input type="date" class="form-control" id="date"
+                                                                   name="date" placeholder="Дата" required>
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">"по"</span>
+															<input type="date" class="form-control" id="date"
+                                                                   name="date" placeholder="Дата" required>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Ответственный за запуск</span>
+															
+															<select class="btn btn-light" id="u249_input">
+																<div text-white>
+																<option value="Сидоров">Сидоров</option>
+																<option value="Иванов">Иванов</option>
+																<option value="Петров">Петров</option>
+																</div>
+															</select>
+
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Результат</span>
+															<select class="btn btn-light" id="u249_input">
+																<option value="Сидоров">Fail</option>
+																<option value="Иванов">Pass</option>
+																</select>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+
+
+
+									</div>
+								</div>
+							</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class=section--table>
+            <div class="row ">
+                <div class="col-12 ">
+                    <div class="table--border h-100">
+                        <table class="table table-sm">
+                        </table>
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Название</th>
+                                <th scope="col">Дата последнего запуска</th>
+                                <th scope="col">Запустил</th>
+                                <th scope="col"></th>
+                                <th scope="col">Всего кейсов</th>
+                                <th scope="col">Выполнено</th>
+                                <th scope="col">Провалено</th>
+                                <th scope="col">Результат</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+
+
+                            <tbody>
+
+                            {% for test_plan in testplan_list %}
+                                <tr>
+                                    <th scope="row">{{ test_plan.id }}</th>
+                                    <td><a  href="{% url 'test_plan_view' test_plan.pk %}">{{ test_plan.title }}</a></td>
+                                    <td>{{ test_plan.updated_at }}</td>
+                                    <td>{{ test_plan.user }}</td>
+                                    <td>{{ testcase.user.image }}
+                                        <i style="font-size:24px" class="fa">&#xf2c0;</i>
+                                    </td>
+                                    <td>12</td>
+                                    <td>10</td>
+                                    <td>2</td>
+                                    <td>
+                                        {% if  test_plan.status == "failed" %}
+                                            <span class="badge badge-danger "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                        {% if  test_plan.status == "success" %}
+                                            <span class="badge badge-success "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                    {% if  test_plan.status == "in_process" %}
+                                            <span class="badge badge-warning "><div
+                                                    class="badge--text">{{ test_plan.status }}</div></span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="table-icon">
+                                            <a href="{% url 'test_plan_edit' test_plan.pk %}">
+                                                <i style="font-size:24px" class="fa">&#xf040;</i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div class="table-icon">
+                                            <a href="URL">
+                                                <i style="font-size:24px" class="fa">&#xf00d;</i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+
+                            </tbody>
+                        </table>
+{% block pagination %}
+  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Previous</a>
+              {% endif %}
+              <span class="page-current">
+                   {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Next</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+
+
+{% endblock %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+

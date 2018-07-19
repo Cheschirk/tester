@@ -1,0 +1,202 @@
+{% extends "wrapper.html" %}
+{% block content %}
+
+		<div class="container-fluid">
+			<div class="section section--main">
+				<div class="row">
+					<div class="col-4">
+						<div class="main-search">
+							<form class="form-inline my-2 my-lg-0">
+								<input class="form-control mr-sm-2" type="search" placeholder="Поиск..." aria-label="Search">
+								<button type="button" class="btn btn-secondary">Найти</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="main-search">
+							<span class="title title--main">
+								<div class="filter--container">
+
+									<div id="accordion">
+										<div class="card-header" id="headingTwo">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+													<div class="text-white filter-text">
+														Расширенный фильтр
+													</div>
+												</button>
+											</h5>
+										</div>
+										<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+											<div class="card-body">
+												<div class="row">
+
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Выберите период      "с"</span>
+															<input type="date" class="form-control" id="date" name="date" placeholder="Дата" required>
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">"по"</span>
+															<input type="date" class="form-control" id="date" name="date" placeholder="Дата" required>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Ответственный за запуск</span>
+															
+															<select class="btn btn-light" id="u249_input">
+																<div text-white>
+																<option value="Сидоров">Сидоров</option>
+																<option value="Иванов">Иванов</option>
+																<option value="Петров">Петров</option>
+																</div>
+															</select>
+
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Результат</span>
+															<select class="btn btn-light" id="u249_input">
+																<option value="Сидоров">Fail</option>
+																<option value="Иванов">Pass</option>
+																</select>
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Тест план</span>
+															
+															<select class="btn btn-light" id="u249_input">
+																<div text-white>
+																<option value="Сидоров">Первый тест-план</option>
+																<option value="Иванов">Второй тест-план</option>
+																<option value="Петров">Третий тест-план</option>
+																</div>
+															</select>
+
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="content--date">
+															<span class="title title--main">Теги</span>
+															<input type="text" size="10" value="" placeholder="Введите тег...">
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+
+
+
+									</div>
+								</div>
+							</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class=section--table>
+				<div class="row ">
+					<div class="col-12 ">
+						<div class="table--border">
+							<table class="table table-sm">
+							</table>
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">ID</th>
+										<th scope="col">Название</th>	
+										<th scope="col">Дата последнего запуска</th>
+										<th scope="col">Запустил</th>
+										<th scope="col"></th>
+										<th scope="col">Результат запуска</th>
+										<th scope="col">Входят в тест план</th>
+										<th scope="col"></th>
+										<th scope="col"></th>
+									</tr>
+								</thead>
+
+								<tbody>
+                                {% for testcase in testcase_list %}
+									<tr>
+										<th scope="row">{{ testcase.id }}</th>
+										<td><a href="{% url 'test_case_view' testcase.pk %}">{{ testcase.title }}</a></td>
+										<td>{{ testcase.updated_at }}</td>
+										<td>{{ testcase.user }}</td>
+										<td>{{ testcase.user.image }}
+											<i style="font-size:24px" class="fa">&#xf2c0;</i>
+										</td>
+										<td>{% if  testcase.status == "failed" %}
+                                            <span class="badge badge-danger "><div
+                                                    class="badge--text">{{ testcase.status }}</div></span>
+                                        {% endif %}
+                                        {% if  testcase.status == "success" %}
+                                            <span class="badge badge-success "><div
+                                                    class="badge--text">{{ testcase.status }}</div></span>
+                                        {% endif %}</td>
+										<td>
+											Первый тест-план
+										</td>
+
+										<td>
+											<div class="table-icon">
+												<a href="URL">
+													<i style="font-size:24px" class="fa">&#xf040;</i>
+												</a>
+											</div>
+										</td>
+										<td>
+
+											<div class="table-icon">
+												<a href="URL">
+													<i style="font-size:24px" class="fa">&#xf00d;</i>
+												</a>
+											</div>
+										</td>
+									</tr>
+
+                                        {% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="container-fluid">
+				<div class="section section--numeration">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<li class="page-item disabled">
+								<a class="page-link" href="#" tabindex="-1">Previous</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#">Next</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+		</div>
+
+
+
+{% endblock %}

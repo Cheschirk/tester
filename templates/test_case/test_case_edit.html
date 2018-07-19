@@ -1,0 +1,61 @@
+{% extends "wrapper.html" %}
+{% block content %}
+
+		<div class="container-fluid">
+			<div class="section section--main">
+				<div class="container">
+				<div class="form-row align-self-center">
+					<label for="inputEmail4"><span class="text-light">Название тест кейса</span></label>
+					<input type="email" class="form-control" id="inputEmail4" placeholder="Имя">
+				</div>
+				<div class="form-group">
+					<label for="inputAddress"><span class="text-light">Предусловие</span></label>
+					<textarea class="test-description form-control" type="text" id="inputAddress" placeholder="Описание...">
+						</textarea>
+				</div>
+				<div class="form-group">
+					<label for="inputAddress"><span class="text-light">Описание тест кейса</span></label>
+					<textarea class="test-description form-control" type="text" id="inputAddress" placeholder="Описание...">
+						</textarea>
+				</div>
+				<div class="form-group">
+					<label for="inputAddress"><span class="text-light">Результат</span></label>
+					<textarea class="test-description form-control" type="text" id="inputAddress" placeholder="Описание...">
+						</textarea>
+				</div>
+				<div class="row">
+
+		<div class="col-2">
+			<div class="content--date">
+				<span class="title title--main">Теги </span>
+				
+				<select class="btn btn-light" id="u249_input">
+					<div text-white>
+					<option value="Сидоров">Тег 1</option>
+					<option value="Иванов">Тег 2</option>
+					<option value="Петров">Тег 3</option>
+					</div>
+				</select>
+
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="content--date">
+				<button type="button" class="btn btn-secondary">Добавить</button>
+			</div>
+		</div>
+	</div>
+				<div class="form-group align-items-center-around m-3  ">
+				
+					<button type="submit" class="btn btn-success">Сохранить</button>
+					<button type="submit" class="btn btn-secondary">Отменить</button>
+				</div>
+			</div>
+			</div>
+		</div>
+							
+
+
+	</div>
+
+{% endblock %}

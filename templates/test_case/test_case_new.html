@@ -1,0 +1,39 @@
+{% extends "wrapper.html" %}
+{% block content %}
+
+
+		<div class="container-fluid">
+			<div class="section section--main">
+			<div class="container">
+				<div class="form-row align-self-center">
+					<label for="inputEmail4"><span class="text-light">Название тест кейса</span></label>
+					<input type="email" class="form-control" id="inputEmail4" placeholder="Имя">
+				</div>
+				<div class="form-group">
+					<label for="inputAddress"><span class="text-light">Предусловие</span></label>
+					<textarea class="test-description form-control" type="text" id="inputAddress" placeholder="Описание...">
+						</textarea>
+				</div>
+				<div class="form-group">
+					<label for="inputAddress"><span class="text-light">Описание тест кейса</span></label>
+					<textarea class="test-description form-control" type="text" id="inputAddress" placeholder="Описание...">
+						</textarea>
+				</div>
+				<div class="form-group">
+					<label for="inputAddress"><span class="text-light">Результат</span></label>
+					<textarea class="test-description form-control" type="text" id="inputAddress" placeholder="Описание...">
+						</textarea>
+				</div>
+				<div class="form-group align-items-center">
+				
+					<button type="submit" class="btn btn-success">Сохранить</button>
+					<button type="submit" class="btn btn-secondary">Отменить</button>
+				</div>
+			</div>
+		</div>
+		</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

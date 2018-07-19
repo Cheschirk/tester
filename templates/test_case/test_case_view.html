@@ -1,0 +1,93 @@
+{% extends "wrapper.html" %}
+{% block content %}
+
+
+		<div class="container-fluid">
+			<div class="section section--main">
+				<div class="row section--title">
+					<div class="col-6">
+							<span class="title title--main">{{ testcase.title }}</span>
+					</div>
+					<div class="col-3">
+                            <a class="btn btn-secondary" href="{% url 'test_case_edit' %}" role="button">Редактировать</a>
+                    </div>
+
+					<div class="col-3">
+                           <a class="btn btn-secondary" href="{% url 'test_case_list' %}" role="button">Вернуться к списку</a>
+					</div>
+                </div>
+                <div class="title title--main">Предусловие</div>
+                <textarea class="test-description form-control" type="text" readonly>{{ testcase.precondition }}</textarea>
+                <div class="title title--main">Описание</div>
+                <textarea class="test-description form-control" type="text" readonly>{{ testcase.description }}</textarea>
+                <div class="title title--main">Ожидаемый результат</div>
+                <textarea class="test-description form-control" type="text" readonly>{{ testcase.result }}</textarea>
+
+                <div class="title title--main">Тест план</div>
+                {% for plancase in plancase_list %}
+                <a href="URL" class="text-third">{{ plancase.test_plan.title }}</a>,
+                {% endfor %}
+                  <div class="title title--main">Тег</div>
+                <a href="URL" class="text-third">{{ testcase.tag }}</a>
+
+                <div class="title title--main">Лог тест-кейса</div>
+
+
+			<div class=section--table>
+				<div class="row ">
+					<div class="col-12 ">
+						<div class="table--border h-100">
+							<table class="table table-sm">
+							</table>
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+                                        <th scope="col">Дата последнего запуска</th>
+										<th scope="col">Запустил</th>
+										<th scope="col"></th>
+										<th scope="col">Статус</th>
+										<th scope="col">Комментарий</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td>{{ testcase.updated_at }}</td>
+										<td>{{ testcase.user }}</td>
+										<td>
+											<i style="font-size:24px" class="fa">&#xf2c0;</i>
+										</td>
+										<td>{% if  testcase.status == "failed" %}
+                                            <span class="badge badge-danger "><div
+                                                    class="badge--text">{{ testcase.status }}</div></span>
+                                        {% endif %}
+                                        {% if  testcase.status == "success" %}
+                                            <span class="badge badge-success "><div
+                                                    class="badge--text">{{ testcase.status }}</div></span>
+                                        {% endif %}</td>
+                                        <td>{{ testcase.description }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+
+        </div>
+
+		</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

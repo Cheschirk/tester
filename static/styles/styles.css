@@ -1,0 +1,279 @@
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+html, 
+body,
+.layout {
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+
+
+}
+.dark-fon{
+  background-image: url( '../images/body-dark.png');
+  width: 100%; height: 100%;
+}
+.first-fon{
+  background-image: url( '../images/login.jpg');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:not([class]) {               /*ЕСЛИ  Ссылка без класса*/
+  color: black;
+ 
+}
+a:not([class]):hover {
+  text-decoration: none;
+}
+
+.main-search a{
+  color: white;
+  font-size: 16px;
+}
+.main-search a:hover{
+  text-decoration: none;
+  color: #00ffb3;
+  font-size: 16px;
+}
+.table-icon a:hover{
+  color:#00ffb3
+}
+
+.section--numeration a{
+  color:grey;
+}
+.section--numeration a:hover{
+  color:#00ffb3
+}
+
+.nav_image {
+  width: 14%;
+  margin: 5px;
+}
+
+.nav--text{
+color: black;
+}
+
+.section{
+  width: 100%
+}
+.row {
+  margin:0;
+}
+.section--header{
+  background-color: rgba(215, 215, 215, 1);
+}
+.navbar{
+
+}
+.dropdown img{
+ width: 40px;
+ height: 33px; 
+
+}
+.add-img{
+ margin-left: 20px;
+
+}
+.nav-lin{
+  display: inline-block;
+}
+.welcome {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.welcome img
+{
+ width: 30px;
+ height: 33px; 
+ padding: 5px;
+}
+.title{
+  font-weight: 600;
+  color: white;
+}
+.section--main{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+
+
+}
+
+.table {
+  text-align: center;
+  object-position: all;
+}
+.section--table{
+  padding: 5px;
+  padding-top: 15px;
+  
+}
+
+.table--border{
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  background-color: white;
+  border-radius: 5px;
+}
+.button_date {
+  margin-top: 20px;  
+  }
+
+.description{
+  padding-top: 10px;
+}
+.badge--text{
+margin: 3px;
+padding:3px;
+}
+
+.content--date{
+  padding: 5px;
+}
+
+.main-search{
+  margin:13px;
+  padding: 13px;
+}
+.table-icon{
+  margin: 2px;
+padding: 2px;}
+
+
+.section--numeration{
+margin: 10px;
+padding: 10px;
+}
+
+.filter--container{
+color:black;
+}
+.filter-text{
+font-size: 16px;
+}
+
+.section--form{
+max-width: 250px;
+margin: 0 auto;
+padding-top: 180px;
+font-weight: 600;
+font-size: 20px;
+text-align: center;
+color: black;
+}
+.form-button{
+margin: 3px;
+padding: 2px;
+}
+
+.text-second{
+font-weight: 400;
+font-size: 16px;
+color: black;
+margin: 2px;
+}
+
+.text-second a:hover{
+color: #00ffb3;
+}
+
+.section--form-two{
+max-width: 250px;
+margin: 0 auto;
+padding-top: 15px;
+font-weight: 600;
+font-size: 20px;
+text-align: center;
+color: black;
+}
+
+.head-form{
+font-size: 22px;
+margin: 4px;
+padding: 43px;
+justify-content: center;
+}
+.test-description{
+min-height: 30vh;
+width: 100%;
+}
+
+.test-description-edit{
+min-height: 30vh;
+width: 100%;
+
+}
+.title--main{
+margin-bottom: 10px;
+margin-top: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+
+}
+.section--title{
+margin-bottom: 10px;
+margin-top: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.comment--content{
+width: 410px;
+}
+
+.text-third{
+font-weight: 400;
+font-size: 14px;
+color: white;
+margin: 5px;
+text-decoration:underline
+}
+
+.text-third a:hover{
+color: #00ffb3 ;
+text-decoration: none;
+}
+
+.profile-photo{
+margin:auto;
+padding-top: 20vh;
+padding-bottom: 20vh;
+}
+
+.photo-board{
+background-color: grey;
+border-radius: 8px;
+}
+
+.form-content {
+display: flex;
+text-align: left;
+white-space: nowrap;
+margin: 10px;
+justify-content: center;
+background-color: darkgrey;
+opacity: 0.95;
+border-radius: 10px;
+}
+
+
