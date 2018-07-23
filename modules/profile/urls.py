@@ -21,7 +21,7 @@ from modules.profile.views import SigninView, LoginView #, UserUpdateView
 urlpatterns = [
     path('signin/', SigninView.as_view(), name='signin'),
     path('login/', LoginView.as_view(), name='login'),
-   # re_path(r'^user_settings/(?P<pk>\d+)$', UserUpdateView.as_view(), name='user_settings'),
+   # path('user_settings/', UserUpdateView.as_view(), name='user_settings'),
 
     ]
 

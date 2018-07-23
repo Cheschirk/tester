@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+@method_decorator(login_required, name='dispatch')
 class PlanListView(generic.ListView):
     model = TestPlan
     template_name = 'test_plan/test_plan_list.html'
@@ -29,6 +30,7 @@ class DashboardView(generic.ListView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class PlanDetailView(generic.DetailView):
     model = TestPlan
     template_name = 'test_plan/test_plan_view.html'
@@ -40,6 +42,7 @@ class PlanDetailView(generic.DetailView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class PlanNewView(generic.CreateView):
     model = TestPlan
     form_class = TestPlanForm
@@ -52,6 +55,7 @@ class PlanNewView(generic.CreateView):
         return super().form_valid(form)
 
 
+@method_decorator(login_required, name='dispatch')
 class PlanUpdateView(generic.UpdateView):
     model = TestPlan
     form_class = TestPlanForm

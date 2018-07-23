@@ -25,8 +25,10 @@ SECRET_KEY = ')5k_(4$n#u0$=lve31mjuuj0ic3g19^s#$j6=2+2#q7ae3&m6c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+AUTH_USER_MODEL = 'profile.User'
+CUSTOM_USER_MODEL = 'profile.User'
 
 # Application definition
 
@@ -35,13 +37,13 @@ INSTALLED_APPS = [
     'modules.test_case',
     'modules.profile',
     'modules.tag',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
 
 ]
 
@@ -84,10 +86,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, '*.sqlite3'),
+
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'postgres',
+        # 'USER': 'tester',
+        # 'PASSWORD': 'tester',
+        # 'HOST': 'postgresql',
+        # 'PORT': 5432,
     }
 }
 
-AUTH_USER_MODEL = 'profile.User'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -137,4 +146,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4',
 LOGIN_URL = '/login/'
 LOGOUT_REDIRECT_URL = '/login/'
 
-CUSTOM_USER_MODEL = 'profile.User'
+

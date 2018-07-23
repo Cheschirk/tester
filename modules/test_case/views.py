@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from modules.test_case.models import TestCase
 from django.views import generic
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 
+@method_decorator(login_required, name='dispatch')
 class CaseListView(generic.ListView):
     model = TestCase
     template_name = 'test_case/test_case_list.html'
     paginate_by = 10
 
 
+@method_decorator(login_required, name='dispatch')
 class CaseDetailView(generic.DetailView):
     model = TestCase
     template_name = 'test_case/test_case_view.html'

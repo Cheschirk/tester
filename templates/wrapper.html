@@ -88,7 +88,7 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarProfile">
 								<a class="dropdown-item" href="{% url 'logout' %}" >  Logout</a>
-								<a class="dropdown-item" href="#" >Profile</a>
+{#								<a class="dropdown-item" href="{% url 'user_settings' %}" >Profile</a>#}
 							</div>
 						</li>
 
@@ -98,9 +98,23 @@
 		</div>
     </div>
 
+{#    {% if user.is_authenticated %}#}
+
+
 {% block content %}
 
 {% endblock %}
+{##}
+{#    {% else %}#}
+{#                <div class="row">#}
+{#                    <div class="col-5"></div>#}
+{#					<div class="col-4">#}
+{#						<div class="content--date">#}
+{#							<span class="title title--main">Вы не имеете доступа к этой странице. Войдите что бы продолжить</span>#}
+{#						</div>#}
+{#					</div>#}
+{#                </div>#}
+{#                {% endif %}#}
 
 
 		<!-- Optional JavaScript -->

@@ -26,8 +26,10 @@
 				<div class="col-6">
 					<div class="head-form">Регистрация учётной записи</div>
                         <div class="form-content">
+                            <form role="form" method="post">
                         {% crispy form %}
                         {% csrf_token %}
+                            </form>
                         </div>
 
 				</div>

@@ -1,0 +1,48 @@
+version: '2'
+
+volumes:
+  tester_psql:
+    external:
+      name: tester_psql
+
+networks:
+  tester:
+    external:
+      name: tester
+
+services:
+  postgresql:
+    image: postgres:9.5
+    container_name: tester_psql
+    environment:
+      POSTGRES_PASSWORD: tester
+      POSTGRES_USER: tester
+      POSTGRES_DB: postgres
+    volumes:
+      - tester_psql:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      tester:
+        aliases:
+          - db
+
+  web:
+    container_name: web
+    image: tester:latest
+    user: root
+    command: python manage.py runserver 0.0.0.0:8000
+    #restart: always
+    volumes:
+      - .:/home/project
+    depends_on:
+      - postgresql
+    ports:
+      - 8000:8000
+    networks:
+      tester:
+        aliases:
+        - web
+
+
+
+
